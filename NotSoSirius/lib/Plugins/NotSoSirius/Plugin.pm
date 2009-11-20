@@ -31,7 +31,7 @@ my $prefs = preferences('plugin.notsosirius');
 
 my $log = Slim::Utils::Log->addLogCategory({
   'category'     => 'plugin.notsosirius',
-  'defaultLevel' => 'DEBUG',
+  'defaultLevel' => 'ERROR',
   'description'  => getDisplayName(),
 });
 
@@ -62,7 +62,6 @@ sub initPlugin {
   if ($accountRef) {
     my $account = @{$accountRef}[0];
     $sirius = Sirius->new($account);
-    $sirius->debug(1);
     $sirius->auth();
     ($genreMap, $channelMap) = {};
   } else {
