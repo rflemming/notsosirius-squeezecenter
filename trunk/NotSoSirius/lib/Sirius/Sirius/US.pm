@@ -142,10 +142,6 @@ sub getStream {
   my $genre = shift;
   my $category = shift;
 
-  # Use this counter as a way of retrying in the event we appear to have
-  # been logged out.  Not very flexible, but functional.
-  my $attempt = shift || 0;
-
   if (! $self->{loggedIn}) {
     $self->auth()
   }
