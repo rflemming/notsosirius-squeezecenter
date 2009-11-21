@@ -160,7 +160,14 @@ sub getStream {
   my $key = shift;
   my $callback = shift;
   my $song = shift;
- 
+
+  # Technically we only need the channel map for the new style media
+  # player because the old one only needed the channel key.  This will
+  # make using a Favorite slow the first time.
+  if (! $channelMap) {
+    ($genreMap, $channelMap) = &getGenreChannelMap();
+  }
+
   my $channel = $channelMap->{$key};
 
   # Only the US site requires all of these, the Canada site only needs

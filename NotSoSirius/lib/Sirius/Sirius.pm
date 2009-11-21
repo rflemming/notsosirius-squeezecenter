@@ -3,6 +3,7 @@ package Sirius;
 use strict;
 use warnings;
 
+use LWP::ConnCache;
 use LWP::UserAgent::Determined;
 use HTML::Entities;
 use HTTP::Cookies;
@@ -77,6 +78,11 @@ sub _new {
   # Storing cookies in memory is sufficient
   $self->{cookie_jar} = HTTP::Cookies->new({});
   $self->{http}->cookie_jar($self->{cookie_jar});
+
+  # Try to reuse existing connections.  I've seen this cause problems,
+  # but LWP::UserAgent::Determined should help with that and this should
+  # make things faster.
+  $self->{http}->conn_cache(LWP::ConnCache->new());
 
   # How many times and how long we should wait before retrying
   $self->{http}->timing('1,1,1,2,2,3');
