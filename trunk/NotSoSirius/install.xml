@@ -5,9 +5,10 @@
   <defaultState>enabled</defaultState>
   <description>PLUGIN_NOTSOSIRIUS_DESC</description>
   <email>flemming@spiralout.net</email>
-  <icon>plugins/NotSoSirius/html/images/icon.png</icon>
-  <module>Plugins::NotSoSirius::Plugin</module>
   <homepageURL>http://notsosirius-squeezecenter.googlecode.com/</homepageURL>
+  <icon>plugins/NotSoSirius/html/images/icon.png</icon>
+  <id>2920e4c5-20f0-4f78-b461-860c4800885b</id>
+  <module>Plugins::NotSoSirius::Plugin</module>
   <optionsURL>plugins/NotSoSirius/settings/basic.html</optionsURL>
   <playerMenu>RADIO</playerMenu>
   <targetApplication>
