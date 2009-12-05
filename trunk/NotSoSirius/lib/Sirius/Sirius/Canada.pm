@@ -176,6 +176,7 @@ sub getStream {
   # only do this once.
   if (! $stream && caller() ne __PACKAGE__) {
     $self->{loggedIn} = 0;
+    Sirius::_debug("Unable to get stream, retrying...");
     return $self->getStream($channel);
   }
   Sirius::_debug("Stream: $stream");

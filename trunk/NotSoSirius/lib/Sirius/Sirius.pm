@@ -96,7 +96,7 @@ sub _new {
           $self->_error("Request for $request->uri failed with code: " .
                         "$response->code()");
         } elsif (! $response->is_success) {
-          _debug("Retry due to response code: $response->code(), " .
+          _debug("Retry due to response code: " . $response->code() . ", " .
                  "waiting $delay seconds.");
         } else {
           $self->{error} = undef;
