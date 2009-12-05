@@ -62,6 +62,8 @@ sub initPlugin {
   if ($accountRef) {
     my $account = @{$accountRef}[0];
     $sirius = Sirius->new($account);
+    # Turn on module level debugging if plugin debugging is enabled
+    $sirius->debug($log->is_debug);
     $sirius->auth();
     ($genreMap, $channelMap) = {};
   } else {
@@ -176,7 +178,6 @@ sub getStream {
     $channel->{key}, $channel->{genre}, $channel->{category});
 
   $stream =~ s/^http/mms/;
-  $log->debug("Streaming: $stream\n");
 
   if ($::VERSION lt '7.4') {
     $song->{'streamUrl'} = $stream;
@@ -213,9 +214,6 @@ sub getGenreChannelMap {
       foreach my $n (keys %channels) {
         my $channel = $channels{$n};
         $channel->{key} = $n;
-        # Add the category and genre keys as attributes
-        $channel->{category} = $c;
-        $channel->{genre} = $g;
         $channelMap{$n} = $channel;
         push(@genre_channels, $n);
       }

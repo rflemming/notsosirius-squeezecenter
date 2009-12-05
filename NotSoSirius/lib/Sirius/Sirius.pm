@@ -226,15 +226,17 @@ sub _parseChannels {
   my %channels = ();
 
   foreach my $line (split(/\r?\n/, $content)) {
-    if ($line =~ /Channel\('.*', '.*', '(.*?)',.*class="channel">(\d+)/) {
-      _debug("Channel: $1");
-      $channels{$1}->{key} = $1;
-      _debug("  Number: $2");
-      $channels{$1}->{number} = $2;
-    } elsif ($line =~ /Channel\('.*', '.*', '(.*?)',.*class="text">(.+)</) {
+    if ($line =~ /Channel\('(.+)', '(.+)', '(.+?)',.*class="channel">(\d+)/) {
+      $channels{$3}->{category} = $1;
+      $channels{$3}->{genre} = $2;
+      _debug("Channel: $3");
+      $channels{$3}->{key} = $3;
+      _debug("  Number: $4");
+      $channels{$3}->{number} = $4;
+    } elsif ($line =~ /Channel\('.+', '.+', '(.+?)',.*class="text">(.+)</) {
       $channels{$1}->{name} = decode_entities($2);
       _debug("  Name: $2");
-    } elsif ($line =~ /Channel\('.*', '.*', '(.*?)',.*class="desc">(.+)</) {
+    } elsif ($line =~ /Channel\('.+', '.+', '(.+?)',.*class="desc">(.+)</) {
       $channels{$1}->{desc} = decode_entities($2);
       _debug("  Desc: $2");
     }
