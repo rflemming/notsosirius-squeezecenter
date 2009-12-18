@@ -70,7 +70,7 @@ sub getNextTrack {
 	}
 	
 	my ($channelId) = $song->currentTrack()->url =~ m{^sirius://(.+)};
-        Plugins::NotSoSirius::Plugin::getStream($song->master(), $channelId, $successCb, $song);
+  Plugins::NotSoSirius::Plugin::getStream($song->master(), $channelId, $successCb, $song);
 }
 
 sub canDirectStreamSong {

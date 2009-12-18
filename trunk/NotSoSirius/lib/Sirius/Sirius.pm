@@ -159,6 +159,8 @@ sub _parseLoginResponse {
       $self->_error("Login failed, incorrect username/password");
     } elsif ($line =~ /an error has occurred/) {
       $self->_error("Unknown login error");
+    } elsif ($line =~ /Insufficient Access/) {
+      $self->_error("Your account has no stream access");
     }
   }
 

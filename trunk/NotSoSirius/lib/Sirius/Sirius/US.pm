@@ -145,6 +145,7 @@ sub getStream {
   if (! $self->{loggedIn}) {
     $self->auth()
   }
+  my $stream = '';
 
   my $url = $self->{base_url} . '/listen/play.action';
 
@@ -162,14 +163,15 @@ sub getStream {
   # Unlike in the old style media player, the value returned is not
   # the direct link to the mms stream.  You must first retrieve that
   # URL, and that page will contain the link to the actual stream.
-  if ($asxfwrd !~ /^http/) {
-    $asxfwrd = 'http://' . $self->{site} . $asxfwrd;
-  }
+  if ($asxfwrd) {
+    if ($asxfwrd !~ /^http/) {
+      $asxfwrd = 'http://' . $self->{site} . $asxfwrd;
+    }
 
-  my $stream = '';
-  $response = $self->{http}->get($asxfwrd);
-  if ($response->content() =~ m/http:\/\/.*\.asx/) {
-    $stream = $response->content();
+    $response = $self->{http}->get($asxfwrd);
+    if ($response->content() =~ m/http:\/\/.*\.asx/) {
+      $stream = $response->content();
+    }
   }
 
   # This is a poor man's relogin/retry mechanism.  If we can't find a
