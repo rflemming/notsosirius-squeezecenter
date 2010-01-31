@@ -5,13 +5,13 @@
  </details>
 
   <plugins>
-        <plugin name="Ampache" version="1.3" minTarget="7.3" maxTarget="*">
+        <plugin name="NotSoSirius" version="0.2" minTarget="7.0a" maxTarget="*">
           <title lang="EN">(not so) SIRIUS Internet Radio</title>
           <desc lang="EN">Plugin for listening to Sirius Radio internet streams</desc>
-          <url>http://notsosirius-squeezecenter.googlecode.com/files/NotSoSirius-0.1.zip</url>
+          <url>http://notsosirius-squeezecenter.googlecode.com/files/NotSoSirius-0.2.zip</url>
           <creator>Robert Flemming</creator>
           <email>flemming@spiralout.net</email>
-          <sha>4e6e264ebc3f5c2f0b6798400a0e888e3743ec20</sha>
+          <sha>f0513664e0ee7f49f0fc01821cdfb330179732f2</sha>
           <link>http://code.google.com/p/notsosirius-squeezecenter/</link>
         </plugin>
   </plugins>
