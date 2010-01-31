@@ -13,8 +13,8 @@
   <playerMenu>RADIO</playerMenu>
   <targetApplication>
     <id>SqueezeCenter</id>
-    <maxVersion>7.0a</maxVersion>
-    <minVersion>*</minVersion>
+    <maxVersion>*</maxVersion>
+    <minVersion>7.0a</minVersion>
   </targetApplication>
   <type>2</type>
   <version>0.2</version>
