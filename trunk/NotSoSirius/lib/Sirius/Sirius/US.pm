@@ -5,6 +5,8 @@ BEGIN{@ISA = qw ( Sirius );}
 use strict;
 use warnings;
 
+use Digest::MD5 'md5_hex';
+
 use constant CAPTCHA => [ '',
   'wrq2', 'ltfk', '2bxh', 'mf6d', 'fexy', 'wc46', 'fyp7', 'x6aw', 'nqqd',
   'rt3k', 'kqhf', 'f2wg', 'atlx', 'qnaf', 'ca2t', 'cy36', 'xddq', 'yayf',
@@ -56,7 +58,7 @@ sub auth {
   my %params = (
     'userName' => $self->{username},
     '__checkbox_remember' => 'true',
-    'password' => $self->{password},
+    'password' => md5_hex($self->{password}),
     'captchaEnabled' => 'true',
     'captchaID' => $self->{captchaID},
     'timeNow' => 'null',
