@@ -179,6 +179,11 @@ sub getStream {
 
   $stream =~ s/^http/mms/;
 
+  # Strip a few parameters off of the stream URL as they seem to cause
+  # odd behavior.  They are not present in the stream URLs from the
+  # official plugin.
+  $stream =~ s/&(wmcache=\d|mswmext=\.asx)//g;
+
   if ($::VERSION lt '7.4') {
     $song->{'streamUrl'} = $stream;
     $song->{'wmaMetadataStream'} = 2;
