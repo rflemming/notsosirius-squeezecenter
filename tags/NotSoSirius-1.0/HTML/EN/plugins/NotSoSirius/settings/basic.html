@@ -1,0 +1,41 @@
+[% PROCESS settings/header.html %]
+
+<div class="settingSection">
+  <div class="prefHead">[% "SETUP_PLUGIN_NOTSOSIRIUS_COUNTRY" | string | upper %]</div>
+  <div class="prefDesc">[% "SETUP_PLUGIN_NOTSOSIRIUS_COUNTRY_DESC" | string %]</div>
+
+  <input type="radio" name="pref_country" value="US" [% IF prefs.country != "Canada" %]checked[% END %]>US</input>
+  <input type="radio" name="pref_country" value="Canada" [% IF prefs.country == "Canada" %]checked[% END %]>Canada</input>
+</div>
+
+<div class="settingSection">
+  <div class="prefHead">[% "SETUP_PLUGIN_NOTSOSIRIUS_USERNAME" | string | upper %]</div>
+  <div class="prefDesc" id="username_desc">[% "SETUP_PLUGIN_NOTSOSIRIUS_USERNAME_DESC" | string %]</div>
+
+  <input type="text" class="stdedit" name="pref_username" id="pref_username" value="[% prefs.username %]" size="16">
+</div>
+
+<div class="settingSection" id="password">
+  <div class="prefHead">[% "SETUP_PLUGIN_NOTSOSIRIUS_PASSWORD" | string | upper %]</div>
+  <div class="prefDesc">[% "SETUP_PLUGIN_NOTSOSIRIUS_PASSWORD_DESC" | string %]</div>
+
+  <input type="password" class="stdedit" name="pref_password" id="pref_password" value="[% prefs.password %]" size="50">
+</div>
+
+<div class="settingSection">
+  <div class="prefHead">[% "SETUP_PLUGIN_NOTSOSIRIUS_TYPE" | string | upper %]</div>
+  <div class="prefDesc">[% "SETUP_PLUGIN_NOTSOSIRIUS_TYPE_DESC" | string %]</div>
+
+  <input type="radio" name="pref_type" value="subscriber" [% IF prefs.type != "guest" %]checked[% END %]>Subscriber</input>
+  <input type="radio" name="pref_type" value="guest" [% IF prefs.type == "guest" %]checked[% END %]>Guest</input>
+</div>
+
+<div class="settingSection">
+  <div class="prefHead">[% "SETUP_PLUGIN_NOTSOSIRIUS_BITRATE" | string | upper %]</div>
+  <div class="prefDesc">[% "SETUP_PLUGIN_NOTSOSIRIUS_BITRATE_DESC" | string %]</div>
+
+  <input type="radio" name="pref_bitrate" value="low" [% IF prefs.bitrate != "high" %]checked[% END %]>Low</input>
+  <input type="radio" name="pref_bitrate" value="high" [% IF prefs.bitrate == "high" %]checked[% END %]>High</input>
+</div>
+
+[% PROCESS settings/footer.html %]

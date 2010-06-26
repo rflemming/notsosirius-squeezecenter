@@ -1,0 +1,21 @@
+<?xml version='1.0' standalone='yes'?>
+<extension>
+  <name>PLUGIN_NOTSOSIRIUS</name>
+  <creator>Robert Flemming</creator>
+  <defaultState>enabled</defaultState>
+  <description>PLUGIN_NOTSOSIRIUS_DESC</description>
+  <email>flemming@spiralout.net</email>
+  <homepageURL>http://notsosirius-squeezecenter.googlecode.com/</homepageURL>
+  <icon>plugins/NotSoSirius/html/images/icon.png</icon>
+  <id>2920e4c5-20f0-4f78-b461-860c4800885b</id>
+  <module>Plugins::NotSoSirius::Plugin</module>
+  <optionsURL>plugins/NotSoSirius/settings/basic.html</optionsURL>
+  <playerMenu>RADIO</playerMenu>
+  <targetApplication>
+    <id>SqueezeCenter</id>
+    <maxVersion>*</maxVersion>
+    <minVersion>7.0a</minVersion>
+  </targetApplication>
+  <type>2</type>
+  <version>1.0</version>
+</extension>
