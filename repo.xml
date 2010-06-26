@@ -5,13 +5,13 @@
  </details>
 
   <plugins>
-        <plugin name="NotSoSirius" version="0.3" minTarget="7.0a" maxTarget="*">
+        <plugin name="NotSoSirius" version="1.0" minTarget="7.0a" maxTarget="*">
           <title lang="EN">(not so) SIRIUS Internet Radio</title>
           <desc lang="EN">Plugin for listening to Sirius Radio internet streams</desc>
-          <url>http://notsosirius-squeezecenter.googlecode.com/files/NotSoSirius-0.3.zip</url>
+          <url>http://notsosirius-squeezecenter.googlecode.com/files/NotSoSirius-1.0.zip</url>
           <creator>Robert Flemming</creator>
           <email>flemming@spiralout.net</email>
-          <sha>4f18cc6ed0712fb3b8c4f560ce359f3d4f6859fb</sha>
+          <sha>7e0e3aa9b65bcd2bc48d0c096458cdc9ccb55415</sha>
           <link>http://code.google.com/p/notsosirius-squeezecenter/</link>
         </plugin>
   </plugins>
