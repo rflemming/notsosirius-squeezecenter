@@ -32,7 +32,7 @@ SETUP_PLUGIN_NOTSOSIRIUS_BITRATE
 	EN	Bitrate
 
 SETUP_PLUGIN_NOTSOSIRIUS_BITRATE_DESC
-	EN	Select 'low' if you don't pay extra for 'high' quality streaming
+	EN	'High' bitrate is for Premium Sirius Internet Radio subscribers only
 
 PLUGIN_NOTSOSIRIUS_FIRMWARE_UPGRADE_REQUIRED
 	EN	To use SIRIUS, press and hold BRIGHTNESS to update your firmware.

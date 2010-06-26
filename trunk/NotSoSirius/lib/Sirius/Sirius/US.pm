@@ -158,6 +158,11 @@ sub getStream {
     'stopped' => 'no',
   );
 
+  # In the new player, bitrate is set via cookie
+  $self->{cookie_jar}->set_cookie(
+      undef, 'sirius_mp_bitrate_button_status_cookie', $self->{bitrate},
+      '/', $self->{site}, undef, 1, undef, undef, 1);
+
   my $response = $self->{http}->get($url . '?' .
                                     Sirius::_joinQueryParams(\%params));
 

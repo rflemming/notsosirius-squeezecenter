@@ -55,7 +55,7 @@ sub handler {
       username => $params->{pref_username} || '',
       password => $params->{pref_password} || '',
       country => $params->{pref_country} || 'US',
-      bitrate => $params->{pref_bitrate} || 'low',
+      bitrate => $params->{pref_bitrate} || 'high',
       type => $params->{pref_type} || 'subscriber'
     };
     $prefs->set('account', \@account);

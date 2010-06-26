@@ -57,7 +57,7 @@ sub _new {
   $self->{username} = undef;
   $self->{password} = undef;
   $self->{type} = 'subscriber';
-  $self->{bitrate} = 'low';
+  $self->{bitrate} = 'high';
   $self->{token} = undef;
   $self->{error} = undef;
   $self->{loggedIn} = 0;
