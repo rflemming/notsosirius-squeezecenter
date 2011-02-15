@@ -5,7 +5,7 @@
  </details>
 
   <plugins>
-        <plugin name="NotSoSirius" version="1.0" minTarget="7.0a" maxTarget="*">
+        <plugin name="NotSoSirius" version="1.1" minTarget="7.0a" maxTarget="*">
           <title lang="EN">(not so) SIRIUS Internet Radio</title>
           <desc lang="EN">Plugin for listening to Sirius Radio internet streams</desc>
           <url>http://notsosirius-squeezecenter.googlecode.com/files/NotSoSirius-1.1.zip</url>
