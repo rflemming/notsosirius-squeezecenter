@@ -7,21 +7,6 @@ use warnings;
 
 use Digest::MD5 'md5_hex';
 
-use constant CAPTCHA => [ '',
-  'wrq2', 'ltfk', '2bxh', 'mf6d', 'fexy', 'wc46', 'fyp7', 'x6aw', 'nqqd',
-  'rt3k', 'kqhf', 'f2wg', 'atlx', 'qnaf', 'ca2t', 'cy36', 'xddq', 'yayf',
-  '4p67', '7ekw', 'yzln', 'rhld', '4eac', 'bhka', 't4kw', 'azqe', 'rwhn',
-  '7rpd', 'fywp', '7hcb', 'ar3l', 'tdkt', 'kf4y', 'yffz', 'eydh', 'ywnk',
-  'nfwm', '2n4d', '634t', 'ynah', 'mhpq', 'n26m', 'ra4c', 'dr4e', 'p6cz',
-  'cnaw', 'w6wm', 'wm3y', 'mrdg', '3khr', 'p6fy', 'ageh', 'ctdc', 'hdzy',
-  'wnkm', 'k72h', 'k627', 'pmw2', 'mwew', 'y3ya', 'r67t', 'ndpe', 'q7mq',
-  'klw2', 'pydr', 'aqkh', 'wdfw', 'ewqh', 'ttep', 'tn6r', 'p6yx', 'nrkw',
-  'exeb', 'ywnz', 'mhzt', 'f7mc', 'rymy', 'mtpc', 'rc3k', 'xebn', 'ffgh',
-  '6y2d', 'mbkx', '6nch', 'thyg', 'rtae', 'hwe2', '3f6d', 'dqpc', 'hacn',
-  'ampy', 'mler', 'mdt2', 'qgbl', 'pdqp', 'eeyc', 'mfml', 'pq3f', 'hppc',
-  'ptxc',
-];
-
 sub new {
   my $proto = shift;
   my $class = ref($proto) || $proto;
@@ -45,47 +30,26 @@ sub auth {
     return;
   }
 
-  my $url = $self->{base_url} . '/login/siriuslogin.action';
-  my $response = $self->{http}->get($url);
-
-  $self->_parseLogin($response->content());
-
-  # We can't proceed with missing info
-  if ($self->{error}) {
-      return;
-  }
-
-  my %params = (
-    'userName' => $self->{username},
-    '__checkbox_remember' => 'true',
-    'password' => md5_hex($self->{password}),
-    'captchaEnabled' => 'true',
-    'captchaID' => $self->{captchaID},
-    'timeNow' => 'null',
-    'captcha_response' => CAPTCHA->[$self->{captchaNum}],
+  my %cookies = (
+    'playerType' => 'sirius',
+    'sirius_user_name' => $self->{username},
+    'sirius_password' => md5_hex($self->{password}),
+    'sirius_mp_playertype' => 'expand',
+    'sirius_mp_bitrate_entitlement_cookie' => $self->{bitrate},
+    'sirius_mp_bitrate_button_status_cookie' => $self->{bitrate},
+    'sirius_login_attempts' => 0,
+    'sirius_consumer_type' => 'sirius_online_' . $self->{type},
+    'sirius_login_type' => $self->{type},
   );
 
-  # Prior to login set cookies related to account type
-  my %type_cookies;
-  if ($self->{type} eq 'subscriber') {
-    %type_cookies = (
-      'sirius_consumer_type' => 'sirius_online_subscriber',
-      'sirius_login_type' => 'subscriber',
-    );
-  } elsif ($self->{type} eq 'guest') {
-    %type_cookies = (
-      'sirius_consumer_type' => 'sirius_online_guest',
-      'sirius_login_type' => 'guest',
-    );
-  }
-
-  foreach my $key (keys %type_cookies) {
-    $self->{cookie_jar}->set_cookie(undef, $key, $type_cookies{$key},
+  foreach my $key (keys %cookies) {
+    $self->{cookie_jar}->set_cookie(undef, $key, $cookies{$key},
         '/', $self->{site}, undef, 1, undef, undef, 1);
   }
 
-  $response = $self->{http}->post($url, \%params);
-  $self->_parseLoginResponse($response->content());
+  # Since no actual login process is taking place simply assume we are
+  # logged in after setting all of the above cookies.
+  $self->{loggedIn} = 1
 }
 
 sub _getFwrdAction {
