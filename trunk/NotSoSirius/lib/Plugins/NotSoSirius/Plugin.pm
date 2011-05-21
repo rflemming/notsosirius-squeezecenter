@@ -240,8 +240,9 @@ sub getGenreChannelMap {
 sub getChannelImage {
   my $channel = shift;
 
-  return 'http://' . $ip_port . 
-         '/plugins/NotSoSirius/html/images/' . $channel . '.png';
+  return $channelMap->{$channel}->{logo} || 
+      'http://' . $ip_port .  '/plugins/NotSoSirius/html/images/' .
+      $channel . '.png';
 }
 
 sub OPMLByNumber {
@@ -254,7 +255,7 @@ sub OPMLByNumber {
       'name' => $channel->{number}.'. '.$channel->{name},
       'description' => $channel->{desc},
       'type' => 'audio',
-      'image' => &getChannelImage($channel->{key}),
+      'image' => getChannelImage($channel->{key}),
       'url' => 'sirius://' . $channel->{key},
     });
   }
@@ -271,7 +272,7 @@ sub OPMLByName {
       'name' => $channel->{name},
       'description' => $channel->{desc},
       'type' => 'audio',
-      'image' => &getChannelImage($channel->{key}),
+      'image' => getChannelImage($channel->{key}),
       'url' => 'sirius://' . $channel->{key},
     });
   }
@@ -292,7 +293,7 @@ sub OPMLByGenre {
         'name' => $channel->{number}.'. '.$channel->{name},
         'description' => $channel->{desc},
         'type' => 'audio',
-        'image' => &getChannelImage($channel->{key}),
+        'image' => getChannelImage($channel->{key}),
         'url' => 'sirius://' . $channel->{key},
       });  
     }
