@@ -93,8 +93,8 @@ sub _new {
         my $request = $_[4][0];
         my $response = $_[5];
         if (! $delay) {
-          $self->_error("Request for $request->uri failed with code: " .
-                        "$response->code()");
+          $self->_error("Request for " . $request->uri . "failed with code: " .
+                        $response->code());
         } elsif (! $response->is_success) {
           _debug("Retry due to response code: " . $response->code() . ", " .
                  "waiting $delay seconds.");
